@@ -17,13 +17,15 @@ def game_over():
 
 def main() -> None:
     secret_number = randrange(1, 11)
-    while True:
+    for _ in range(MAX_AMOUNT_OF_GUESSES):
         user_guess = int(input("Enter your guess: "))
         if secret_number == user_guess:
             success()
             break
         else:
             fail()
+    else:
+        game_over()
 
 
 if __name__ == "__main__":

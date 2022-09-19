@@ -19,14 +19,19 @@ def wrong_input():
     print("Pleases enter a number!")
 
 
-def get_user_input():
-    pass
+def get_user_input() -> int:
+    while True:
+        try:
+            user_guess = int(input("Enter your guess: "))
+            return user_guess
+        except ValueError:
+            wrong_input()
 
 
 def main() -> None:
     secret_number = randrange(1, 11)
     for _ in range(MAX_AMOUNT_OF_GUESSES):
-        user_guess = int(input("Enter your guess: "))
+        user_guess = get_user_input()
         if secret_number == user_guess:
             success()
             break
